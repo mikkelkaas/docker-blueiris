@@ -11,13 +11,13 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV DISPLAY :0
 ENV BLUEIRIS_VERSION=5
-ENV RESOLUTION=1024x768x24
+ENV RESOLUTION=1920x1080x24
 ENV USRWINE=/usr/share/wine
 
 RUN mkdir -p /usr/share/wine/mono /usr/share/wine/gecko
-ADD http://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.1-x86_64.msi $USRWINE/gecko
-ADD http://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.1-x86.msi $USRWINE/gecko
-ADD https://dl.winehq.org/wine/wine-mono/5.1.0/wine-mono-5.1.0-x86.msi $USRWINE/mono
+ADD http://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.2-x86_64.msi $USRWINE/gecko
+ADD http://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.2-x86.msi $USRWINE/gecko
+ADD https://dl.winehq.org/wine/wine-mono/5.1.0/wine-mono-5.1.1-x86.msi $USRWINE/mono
 
 RUN apt-get update && \
     apt-get install -y wget gnupg software-properties-common winbind python python-numpy unzip jq curl && \
@@ -49,7 +49,10 @@ RUN chmod +x $HOME/*.sh && \
     ln -s $HOME/menu $HOME/.fluxbox/menu && \
     ln -s $HOME/novnc/vnc_lite.html $HOME/novnc/index.html && \
     mkdir -p $HOME/prefix && \
-    chown -R wineuser:wineuser $HOME
+    chown -R wineuser:wineuser $HOME && \
+	chmod 777 /home/wineuser && \
+    chmod -R 777 /home/wineuser
+RUN mkdir /media/nas
 
 
 USER wineuser
