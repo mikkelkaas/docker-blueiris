@@ -15,9 +15,9 @@ ENV RESOLUTION=1920x1080x24
 ENV USRWINE=/usr/share/wine
 
 RUN mkdir -p /usr/share/wine/mono /usr/share/wine/gecko
-ADD http://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.2-x86_64.msi $USRWINE/gecko
-ADD http://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.2-x86.msi $USRWINE/gecko
-ADD https://dl.winehq.org/wine/wine-mono/5.1.0/wine-mono-5.1.1-x86.msi $USRWINE/mono
+ADD http://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86_64.msi $USRWINE/gecko
+ADD http://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86.msi $USRWINE/gecko
+ADD https://dl.winehq.org/wine/wine-mono/5.1.1/wine-mono-5.1.1-x86.msi $USRWINE/mono
 
 RUN apt-get update && \
     apt-get install -y wget gnupg software-properties-common winbind python python-numpy unzip jq curl && \
